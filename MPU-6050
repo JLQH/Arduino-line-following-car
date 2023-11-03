@@ -1,0 +1,39 @@
+#include <Wire.h>
+#include <MPU6050.h>
+
+MPU6050 mpu;
+
+void setup() {
+  Wire.begin();
+  mpu.initialize();
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Read data from the MPU-6050
+  mpu.getMotion6();
+  
+  // Extract motion data
+  int16_t ax = mpu.getAccelerationX();
+  int16_t ay = mpu.getAccelerationY();
+  int16_t az = mpu.getAccelerationZ();
+  int16_t gx = mpu.getRotationX();
+  int16_t gy = mpu.getRotationY();
+  int16_t gz = mpu.getRotationZ();
+
+  // Print the motion data
+  Serial.print("Accel: ");
+  Serial.print(ax);
+  Serial.print(", ");
+  Serial.print(ay);
+  Serial.print(", ");
+  Serial.print(az);
+  Serial.print("   Gyro: ");
+  Serial.print(gx);
+  Serial.print(", ");
+  Serial.print(gy);
+  Serial.print(", ");
+  Serial.println(gz);
+
+  delay(100);  // Delay for 100ms (adjust as needed)
+}
