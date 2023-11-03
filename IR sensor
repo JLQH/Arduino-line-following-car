@@ -7,16 +7,16 @@ int enB = 11;
 void setup() {
   pinMode(outputA, INPUT);
   pinMode(outputB, INPUT);
-  pinMode(inA, OUTPUT);
+  pinMode(enA, OUTPUT);
   pinMode(enB, OUTPUT);
 }
 
 void loop() {
    int sensorA = analogRead(outputA);
    int sensorB = analogRead(outputB);
-   Serial.print(“Output A: ”);
+   Serial.print("Output A: ");
    Serial.print(sensorA);
-   Serial.print(“Output B: ”);   //can be removed after threshold values are obtained
+   Serial.print(" - Output B: ");   //can be removed after threshold values are obtained
    Serial.print(sensorB);
    delay(100);
 
@@ -35,6 +35,5 @@ void loop() {
       analogWrite(enB, 255);          //car turns left
    } else {
       //all motors stop
+   }
 }
-
-
