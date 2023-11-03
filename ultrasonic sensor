@@ -30,4 +30,5 @@ void loop() {
   delay(1000); 
   if (range <=10) {
     motorStop(); //all motors stop
+  }
 }
