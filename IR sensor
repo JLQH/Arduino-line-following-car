@@ -1,0 +1,40 @@
+int outputA = A0;
+int outputB = A1;
+int enA = 3;
+int enB = 11;
+
+
+void setup() {
+  pinMode(outputA, INPUT);
+  pinMode(outputB, INPUT);
+  pinMode(inA, OUTPUT);
+  pinMode(enB, OUTPUT);
+}
+
+void loop() {
+   int sensorA = analogRead(outputA);
+   int sensorB = analogRead(outputB);
+   Serial.print(“Output A: ”);
+   Serial.print(sensorA);
+   Serial.print(“Output B: ”);   //can be removed after threshold values are obtained
+   Serial.print(sensorB);
+   delay(100);
+
+  int thresholdA = 700;
+  int thresholdB = 700;
+
+   if (sensorA >= thresholdA && sensorB >= thresholdB) {
+      //all motors run in full speed
+   } else if (sensorA >= thresholdA) {
+      //all motors start
+      analogWrite(enA, 255);
+      analogWrite(enB, 100);          //car turns right
+   } else if (sensorB >= thresholdB) {
+      //all motors start
+      analogWrite(enA, 100);
+      analogWrite(enB, 255);          //car turns left
+   } else {
+      //all motors stop
+}
+
+
