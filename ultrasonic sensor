@@ -1,0 +1,33 @@
+const int trigPin = 8;
+const int echoPin = 10;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+}
+
+void loop() {
+  long duration;
+  float range;
+
+  // Send a 10µs pulse to trigger the sensor
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  // Read the pulse from the echo pin
+  duration = pulseIn(echoPin, HIGH);
+
+  range = (duration / 2) * 0.0343;
+
+  Serial.print("Range: ");
+  Serial.print(range);
+  Serial.println(" cm");
+
+  delay(1000); 
+  if (range <=10) {
+    motorStop(); //all motors stop
+}
