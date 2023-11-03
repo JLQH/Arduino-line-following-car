@@ -1,0 +1,23 @@
+const int encoderPin = 9; 
+volatile int pulseCount = 0; 
+float wheelCircumference = 10.50; 
+const int pulseperturn = 20;
+
+void setup() {
+  pinMode(encoderPin, INPUT);
+  attachInterrupt(digitalPinToInterrupt(encoderPin), countPulse, FALLING);
+  Serial.begin(9600); 
+}
+
+void loop() {
+  float distanceCovered = (pulseCount/pulseperturn) * (wheelCircumference/360);
+  Serial.print("Pulse Count: ");
+  Serial.println(pulseCount);
+  Serial.print("Distance(mcm): ");
+  Serial.println(distance);
+  delay(1000); 
+}
+
+void countPulse() {
+  pulseCount++;
+}

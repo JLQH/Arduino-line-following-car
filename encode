@@ -1,8 +1,0 @@
-void pulseCounter() {
-      pulseCount++;
-}
-void loop()
- {
-  pinMode(encoderPin, INPUT);
-  attachInterrupt(digitalPinToInterrupt(encoderPin), pulseCounter, RISING);
- }
