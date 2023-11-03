@@ -10,7 +10,7 @@ void setup() {
 }
 
 void loop() {
-  float distanceCovered = (pulseCount/pulseperturn) * (wheelCircumference/360);
+  float distance = (pulseCount/pulseperturn) * (wheelCircumference/360);
   Serial.print("Pulse Count: ");
   Serial.println(pulseCount);
   Serial.print("Distance(mcm): ");
