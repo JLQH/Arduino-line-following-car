@@ -4,7 +4,7 @@
 
 Updates :
 1. Uploaded the full version code (Project week 3 v2)
-
+2. Uploaded separate sketch for Bluetooth module
 
 
 
