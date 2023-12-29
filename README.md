@@ -1,11 +1,9 @@
 # Arduino-line-following-car
 
--The code of each sensor are placed in separate files as they are only on theory phase
-
--Some sensor may assign to overlapping Arduino pins
-
 -All code are verified with Arduino IDE
 
+Updates :
+1. Uploaded the full version code (Project week 3 v2)
 
 
 
