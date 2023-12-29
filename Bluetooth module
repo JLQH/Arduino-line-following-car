@@ -1,0 +1,85 @@
+
+int in1 = 10;
+int in2 = 12;
+int in3 = 11;
+int in4 = 13;
+
+#include <SoftwareSerial.h> 
+SoftwareSerial MyBlue(2, 3); // RX | TX 
+
+/*Bluetooth control car with Arduino Nano board
+   Home Page
+*/
+
+
+
+void setup() {
+  Serial.begin(9600);
+  MyBlue.begin(9600);
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+  pinMode(in3, OUTPUT);
+  pinMode(in4, OUTPUT);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    char value = Serial.read();
+    Serial.println(value);
+
+    if (value == 'F') {
+      motorStart();
+    } else if (value == 'B') {
+      moveBackward();
+    } else if (value == 'S') {
+      motorStop();
+    } else if (value == 'L') {
+      leftMotorStart();
+    } else if (value == 'R') {
+      rightMotorStart();
+    }
+  }
+}
+
+
+void motorStart() {
+  analogWrite(in1, 70);
+  analogWrite(in2, 0);
+  analogWrite(in3, 70);
+  analogWrite(in4, 0);
+}
+
+void moveBackward() {
+  analogWrite(in1, 0);
+  analogWrite(in2, 70);
+  analogWrite(in3, 0);
+  analogWrite(in4, 70);
+}
+
+void leftMotorStart() {
+  analogWrite(in1, 150);
+  analogWrite(in2, 0);
+  analogWrite(in3, 0);
+  analogWrite(in4, 150);
+}
+
+void rightMotorStart() {
+  analogWrite(in1, 0);
+  analogWrite(in2, 150);
+  analogWrite(in3, 150);
+  analogWrite(in4, 0);
+}
+
+void motorStop() {
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, LOW);
+}
+void motorTurn() {
+  analogWrite(in1, 150);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, LOW);
+  analogWrite(in4, 150);
+  delay(1730);
+}
